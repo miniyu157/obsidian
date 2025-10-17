@@ -1,0 +1,46 @@
+#!/bin/sh
+
+killall -9 termux-x11 2>/dev/null
+termux-x11 :0 -dpi 96 &
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
+
+su -c '
+ChrootPath="/data/local/tmp/arch"
+busybox mount -o remount,dev,suid /data
+
+# 修复 /dev/null 问题
+if [ ! -c /dev/null ]; then
+    rm -f /dev/null
+    mknod /dev/null c 1 3
+    chmod 666 /dev/null
+    chown root:root /dev/null
+fi
+mkdir -p $ChrootPath/dev/pts
+mkdir -p $ChrootPath/proc
+mkdir -p $ChrootPath/sys
+mkdir -p $ChrootPath/sdcard
+mkdir -p $ChrootPath/tmp
+mkdir -p $ChrootPath/dev/shm
+
+mkdir -p /data/user/0/com.termux/files/usr/tmp
+chown 1777 /data/user/0/com.termux/files/usr/tmp
+
+busybox mount --bind /dev $ChrootPath/dev
+busybox mount --bind /sys $ChrootPath/sys
+busybox mount --bind /proc $ChrootPath/proc
+busybox mount -t devpts devpts $ChrootPath/dev/pts
+busybox mount --bind /sdcard $ChrootPath/sdcard
+busybox mount --bind /data/data/com.termux/files/usr/tmp $ChrootPath/tmp
+busybox mount -t tmpfs -o size=512M tmpfs $ChrootPath/dev/shm
+
+# 等 X11 socket 就绪
+while [ ! -S "/data/data/com.termux/files/usr/tmp/.X11-unix/X0" ]; do sleep 0.2; done
+
+exec busybox chroot "$ChrootPath" /bin/su - yumeka -c "
+mkdir -p /tmp/xdg-yumeka
+chmod 0700 /tmp/xdg-yumeka
+export DISPLAY=:0
+dbus-run-session startxfce4
+"
+
+'
