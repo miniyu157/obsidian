@@ -222,6 +222,8 @@ sudo pacman -S --noconfirm xfce4 xfce4-goodies
 pkg install -y x11-repo termux-x11
 ```
 
+![[ArchDesktop]]
+
 ### 安装桌面（带硬件加速）
 
 > 安装驱动
