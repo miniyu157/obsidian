@@ -85,12 +85,6 @@ pacman -S --noconfirm --needed sudo git wget curl openssh vim base-devel unzip p
 pacman -S --noconfirm --needed neovim micro rsync fzf zellij fd eza ripgrep zoxide atuin bat btop fastfetch gdu duf tealdeer inxi
 ```
 
-字体（如果你想安装桌面）
-
-```bash
-pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji
-```
-
 其他 shell（或者进入用户后更换）
 
 ```bash
@@ -214,6 +208,24 @@ git clone https://aur.archlinux.org/paru.git && cd paru/ && makepkg -si && cd ..
 
 ```bash
 sudo pacman -S --noconfirm xfce4 xfce4-goodies
+```
+
+主题（编译很慢）
+
+```bash
+paru -S yaru-xfwm4-theme yaru-gtk-theme yaru-icon-theme
+```
+
+字体
+
+```bash
+pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji
+```
+
+略缩图插件
+
+```bash
+sudo pacman -S --noconfirm --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub
 ```
 
 装好后 exit 退出来
