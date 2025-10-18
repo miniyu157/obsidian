@@ -36,8 +36,29 @@ fi
 eval "SelectedFile=\${$choice}"
 
 if [ -d "$TargetDir" ]; then
-  echo "错误: 恢复目标 '$TargetDir' 已存在。"
-  exit 1
+  echo "警告: 恢复目标 '$TargetDir' 已存在。"
+  printf "请输入一个新名称来重命名旧的文件夹 (或直接按回车键退出): "
+  read -r new_name </dev/tty
+
+  if [ -z "$new_name" ]; then
+    echo "操作已取消。"
+    exit 0
+  fi
+
+  new_path="$RestoreDir/$new_name"
+
+  if [ -e "$new_path" ]; then
+    echo "错误: 目标名称 '$new_path' 已存在。无法重命名。"
+    exit 1
+  fi
+
+  echo "正在将 '$TargetDir' 重命名为 '$new_path'..."
+  if mv "$TargetDir" "$new_path"; then
+    echo "重命名成功。旧文件夹已移动到 '$new_path'。"
+  else
+    echo "错误: 重命名失败。"
+    exit 1
+  fi
 fi
 
 echo "准备从 '$SelectedFile' 恢复到 '$RestoreDir'..."

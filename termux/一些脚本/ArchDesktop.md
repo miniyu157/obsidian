@@ -44,7 +44,7 @@ mkdir -p $ChrootPath/tmp
 mkdir -p $ChrootPath/dev/shm
 
 mkdir -p /data/user/0/com.termux/files/usr/tmp
-chown 1777 /data/user/0/com.termux/files/usr/tmp
+chmod 1777 /data/user/0/com.termux/files/usr/tmp
 
 busybox mount --bind /dev $ChrootPath/dev
 busybox mount --bind /sys $ChrootPath/sys
@@ -57,6 +57,14 @@ busybox mount -t tmpfs -o size=512M tmpfs $ChrootPath/dev/shm
 # 等 X11 socket 就绪
 while [ ! -S "/data/data/com.termux/files/usr/tmp/.X11-unix/X0" ]; do sleep 0.2; done
 
+# 劫持 systemctl，让 GNOME/Xfce 组件不再报 status 1
+echo "#!/bin/sh
+case \$1 in import-environment|list-jobs|start|stop|is-active|is-enabled) exit 0;; *) exec systemctl.orig \\\"\$@\\\" 2>/dev/null || exit 0;; esac" \
+> $ChrootPath/usr/bin/systemctl && chmod 755 $ChrootPath/usr/bin/systemctl
+
+# 补 pm-is-supported，防止 xfce4-session 报"没有那个文件或目录"
+ln -sf /bin/true $ChrootPath/usr/bin/pm-is-supported
+
 exec busybox chroot "$ChrootPath" /bin/su - yumeka -c "
 mkdir -p /tmp/xdg-yumeka
 chmod 0700 /tmp/xdg-yumeka
@@ -65,4 +73,5 @@ dbus-run-session startxfce4
 "
 
 '
+
 ```
