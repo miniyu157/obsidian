@@ -22,7 +22,7 @@ mkdir arch && wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar
 
 ### 进入 archlinux
 
-![[ArchTty]]
+[[ArchTty]]
 
 ### 设置网络
 
@@ -35,20 +35,6 @@ echo "127.0.0.1 localhost" > /etc/hosts
 ```
 
 ### 设置软件源和 pacman
-
-编辑 `/data/local/tmp/arch/etc/pacman.d/mirrorlist`
-
-```bash
-nano /etc/pacman.d/mirrorlist
-```
-
-> 添加
-> ```
-> Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo
-> ```
-> 同时可以注释掉其他源
-
-> 如果你很懒
 
 ```bash
 sed -i.bak -e '/^## Geo-IP based mirror selection and load balancing/i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo\n' -e 's|^Server = http://mirror.archlinuxarm.org/\$arch/\$repo|# &|' /etc/pacman.d/mirrorlist
@@ -136,9 +122,7 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 安装 fakeroot-tcp
 
 ```bash
-wget "https://raw.githubusercontent.com/miniyu157/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz/refs/heads/main/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz"
-pacman -U fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz
-rm fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz
+wget "https://raw.githubusercontent.com/miniyu157/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz/refs/heads/main/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz" && pacman -U fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz && rm fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz
 ```
 
 如果链接寄了
@@ -231,13 +215,19 @@ pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji
 sudo pacman -S --noconfirm --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub
 ```
 
+回收站
+
+```bash
+sudo pacman -S gvfs
+```
+
 装好后 exit 退出来
 
 ```bash
 pkg install -y x11-repo && pkg install -y termux-x11
 ```
 
-![[ArchDesktop]]
+[[ArchDesktop]]
 
 ### 安装桌面（带硬件加速）
 

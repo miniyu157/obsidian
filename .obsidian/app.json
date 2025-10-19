@@ -20,6 +20,7 @@
     "editor:toggle-checklist-status",
     "editor:indent-list",
     "editor:unindent-list",
-    "editor:configure-toolbar"
+    "editor:fold-all",
+    "editor:unfold-all"
   ]
 }
