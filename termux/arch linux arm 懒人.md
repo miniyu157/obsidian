@@ -55,12 +55,10 @@ git clone https://aur.archlinux.org/paru.git && cd paru/ && makepkg -si && cd ..
 安装 xfce4 桌面，等宽、中文、emoji字体，略缩图插件，回收站
 
 ```bash
-sudo pacman -S --noconfirm xfce4 xfce4-goodies && pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji && sudo pacman -S --noconfirm --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub gvfs
+sudo pacman -S xfce4 xfce4-goodies && sudo pacman -S ttf-fira-code wqy-microhei noto-fonts-emoji && sudo pacman -S --noconfirm --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub gvfs
 ```
 
 装好后 exit 两次退出到 termux，以下命令安装 termux-x11 并创建启动脚本 
-
-`/data/user/0/com.termux/files/home/.local/bin/arch-desktop`
 
 ```bash
 pkg install -y x11-repo && pkg install -y termux-x11 && touch /data/user/0/com.termux/files/home/.termux/widget/dynamic_shortcuts/ArchDesktop && chmod +x /data/user/0/com.termux/files/home/.termux/widget/dynamic_shortcuts/ArchDesktop && ln -s /data/data/com.termux/files/home/.termux/widget/dynamic_shortcuts/ArchDesktop ~/.local/bin/arch-desktop && echo "IyEvYmluL3NoCgpraWxsYWxsIC05IHRlcm11eC14MTEgMj4vZGV2L251bGwKdGVybXV4LXgxMSA6MCAtZHBpIDk2ICYKYW0gc3RhcnQgLS11c2VyIDAgLW4gY29tLnRlcm11eC54MTEvY29tLnRlcm11eC54MTEuTWFpbkFjdGl2aXR5CgpzdSAtYyAnCkNocm9vdFBhdGg9Ii9kYXRhL2xvY2FsL3RtcC9hcmNoIgpidXN5Ym94IG1vdW50IC1vIHJlbW91bnQsZGV2LHN1aWQgL2RhdGEKCiMg5L+u5aSNIC9kZXYvbnVsbCDpl67popgKaWYgWyAhIC1jIC9kZXYvbnVsbCBdOyB0aGVuCiAgICBybSAtZiAvZGV2L251bGwKICAgIG1rbm9kIC9kZXYvbnVsbCBjIDEgMwogICAgY2htb2QgNjY2IC9kZXYvbnVsbAogICAgY2hvd24gcm9vdDpyb290IC9kZXYvbnVsbApmaQpta2RpciAtcCAkQ2hyb290UGF0aC9kZXYvcHRzCm1rZGlyIC1wICRDaHJvb3RQYXRoL3Byb2MKbWtkaXIgLXAgJENocm9vdFBhdGgvc3lzCm1rZGlyIC1wICRDaHJvb3RQYXRoL3NkY2FyZApta2RpciAtcCAkQ2hyb290UGF0aC90bXAKbWtkaXIgLXAgJENocm9vdFBhdGgvZGV2L3NobQoKbWtkaXIgLXAgL2RhdGEvdXNlci8wL2NvbS50ZXJtdXgvZmlsZXMvdXNyL3RtcApjaG1vZCAxNzc3IC9kYXRhL3VzZXIvMC9jb20udGVybXV4L2ZpbGVzL3Vzci90bXAKCmJ1c3lib3ggbW91bnQgLS1iaW5kIC9kZXYgJENocm9vdFBhdGgvZGV2CmJ1c3lib3ggbW91bnQgLS1iaW5kIC9zeXMgJENocm9vdFBhdGgvc3lzCmJ1c3lib3ggbW91bnQgLS1iaW5kIC9wcm9jICRDaHJvb3RQYXRoL3Byb2MKYnVzeWJveCBtb3VudCAtdCBkZXZwdHMgZGV2cHRzICRDaHJvb3RQYXRoL2Rldi9wdHMKYnVzeWJveCBtb3VudCAtLWJpbmQgL3NkY2FyZCAkQ2hyb290UGF0aC9zZGNhcmQKYnVzeWJveCBtb3VudCAtLWJpbmQgL2RhdGEvZGF0YS9jb20udGVybXV4L2ZpbGVzL3Vzci90bXAgJENocm9vdFBhdGgvdG1wCmJ1c3lib3ggbW91bnQgLXQgdG1wZnMgLW8gc2l6ZT01MTJNIHRtcGZzICRDaHJvb3RQYXRoL2Rldi9zaG0KCiMg562JIFgxMSBzb2NrZXQg5bCx57uqCndoaWxlIFsgISAtUyAiL2RhdGEvZGF0YS9jb20udGVybXV4L2ZpbGVzL3Vzci90bXAvLlgxMS11bml4L1gwIiBdOyBkbyBzbGVlcCAwLjI7IGRvbmUKCiMg5Yqr5oyBIHN5c3RlbWN0bO+8jOiuqSBHTk9NRS9YZmNlIOe7hOS7tuS4jeWGjeaKpSBzdGF0dXMgMQplY2hvICIjIS9iaW4vc2gKY2FzZSBcJDEgaW4gaW1wb3J0LWVudmlyb25tZW50fGxpc3Qtam9ic3xzdGFydHxzdG9wfGlzLWFjdGl2ZXxpcy1lbmFibGVkKSBleGl0IDA7OyAqKSBleGVjIHN5c3RlbWN0bC5vcmlnIFxcXCJcJEBcXFwiIDI+L2Rldi9udWxsIHx8IGV4aXQgMDs7IGVzYWMiIFwKPiAkQ2hyb290UGF0aC91c3IvYmluL3N5c3RlbWN0bCAmJiBjaG1vZCA3NTUgJENocm9vdFBhdGgvdXNyL2Jpbi9zeXN0ZW1jdGwKCiMg6KGlIHBtLWlzLXN1cHBvcnRlZO+8jOmYsuatoiB4ZmNlNC1zZXNzaW9uIOaKpSLmsqHmnInpgqPkuKrmlofku7bmiJbnm67lvZUiCmxuIC1zZiAvYmluL3RydWUgJENocm9vdFBhdGgvdXNyL2Jpbi9wbS1pcy1zdXBwb3J0ZWQKCmV4ZWMgYnVzeWJveCBjaHJvb3QgIiRDaHJvb3RQYXRoIiAvYmluL3N1IC0geXVtZWthIC1jICIKbWtkaXIgLXAgL3RtcC94ZGcteXVtZWthCmNobW9kIDA3MDAgL3RtcC94ZGcteXVtZWthCmV4cG9ydCBESVNQTEFZPTowCmRidXMtcnVuLXNlc3Npb24gc3RhcnR4ZmNlNAoiCgonCg==" | base64 -d > /data/user/0/com.termux/files/home/.termux/widget/dynamic_shortcuts/ArchDesktop
@@ -71,17 +69,15 @@ pkg install -y x11-repo && pkg install -y termux-x11 && touch /data/user/0/com.t
 
 接下来可以做什么？
 
+- 将 `/data/user/0/com.termux/files/home/.local/bin/arch` 末尾改为进入普通用户
 - 启动桌面
 	```
 	/data/user/0/com.termux/files/home/.local/bin/arch-desktop
 	```
-
 - 把启动脚本放在桌面上
 	[[Termux 基础配置]]
-
 - 换一个 shell
 	[[fish]]
 	[[zsh]]
-
-- 解决缩放问题或者其他小问题
+- 解决缩放问题和其他小问题
 	[[其他问题]]
