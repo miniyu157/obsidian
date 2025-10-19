@@ -6,9 +6,6 @@
 pkg install tsu wget
 ```
 
-> [!NOTE]
-> 此时你应该已经安装好了 termux 必要的软件包
-
 ```bash
 tsu
 ```
