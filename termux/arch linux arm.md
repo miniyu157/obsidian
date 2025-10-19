@@ -231,7 +231,7 @@ sudo pacman -S --noconfirm --needed tumbler ffmpegthumbnailer poppler-glib libgs
 装好后 exit 退出来
 
 ```bash
-pkg install -y x11-repo termux-x11
+pkg install -y x11-repo && pkg install -y termux-x11
 ```
 
 ![[ArchDesktop]]
