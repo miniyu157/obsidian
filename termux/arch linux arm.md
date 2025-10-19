@@ -48,6 +48,12 @@ nano /etc/pacman.d/mirrorlist
 > ```
 > 同时可以注释掉其他源
 
+> 如果你很懒
+
+```bash
+sed -i.bak -e '/^## Geo-IP based mirror selection and load balancing/i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo\n' -e 's|^Server = http://mirror.archlinuxarm.org/\$arch/\$repo|# &|' /etc/pacman.d/mirrorlist
+```
+
 ```bash
 sed -i.bak '1i TMPDIR=/var/tmp' /etc/mkinitcpio.conf
 ```
