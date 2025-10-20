@@ -34,3 +34,215 @@ mkdir -p /data/user/0/com.termux/files/home/.local/bin
 安装其他 shell
 
 [[fish]] [[zsh]]
+
+Termux:x11 App 键位
+
+```json
+[
+    [
+        "ESC",
+        {
+            "key": "DRAWER",
+            "display": "Menu"
+        },
+        {
+            "macro": "CTRL x",
+            "display": "剪切",
+            "popup": {
+                "macro": "d"
+            }
+        },
+        {
+            "macro": "CTRL c",
+            "display": "复制",
+            "popup": {
+                "macro": "y"
+            }
+        },
+        {
+            "macro": "CTRL v",
+            "display": "粘贴",
+            "popup": {
+                "macro": "p"
+            }
+        },
+        {
+            "macro": "CTRL k c",
+            "display": "注释",
+            "popup": {
+                "macro": "g c"
+            }
+        },
+        {
+            "macro": "CTRL k u",
+            "display": "反注",
+            "popup": {
+                "macro": "g c"
+            }
+        },
+        {
+            "macro": "CTRL k e",
+            "display": "格式化"
+        },
+        "PGUP"
+    ],
+    [
+        "TAB",
+        "SHIFT",
+        {
+            "key": "q",
+            "popup": {
+                "macro": ":q ENTER"
+            }
+        },
+        {
+            "macro": "CTRL a",
+            "display": "全选",
+            "popup": {
+                "display": "全选复制",
+                "macro": ":%y+ ENTER"
+            }
+        },
+        {
+            "macro": "CTRL s",
+            "display": "保存",
+            "popup": {
+                "macro": ":w ENTER"
+            }
+        },
+        "HOME",
+        "UP",
+        "END",
+        "PGDN"
+    ],
+    [
+        "CTRL",
+        "ALT",
+        "KEYBOARD",
+        {
+            "macro": "CTRL z",
+            "display": "撤销",
+            "popup": {
+                "macro": "u"
+            }
+        },
+        {
+            "macro": "CTRL y",
+            "display": "重做",
+            "popup": {
+                "macro": "CTRL r"
+            }
+        },
+        "LEFT",
+        "DOWN",
+        "RIGHT",
+        "ENTER"
+    ]
+]
+```
+
+对应 Termux
+
+```json
+extra-keys = [ \
+    [ \
+        "ESC", \
+        { \
+            "key": "DRAWER", \
+            "display": "Menu" \
+        }, \
+        { \
+            "macro": "CTRL x", \
+            "display": "剪切", \
+            "popup": { \
+                "macro": "d" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL c", \
+            "display": "复制", \
+            "popup": { \
+                "macro": "y" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL v", \
+            "display": "粘贴", \
+            "popup": { \
+                "macro": "p" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL k c", \
+            "display": "注释", \
+            "popup": { \
+                "macro": "g c" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL k u", \
+            "display": "反注", \
+            "popup": { \
+                "macro": "g c" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL k e", \
+            "display": "格式化" \
+        }, \
+        "PGUP" \
+    ], \
+    [ \
+        "TAB", \
+        "SHIFT", \
+        { \
+            "key": "q", \
+            "popup": { \
+                "macro": ":q ENTER" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL a", \
+            "display": "全选", \
+            "popup": { \
+                "display": "全选复制", \
+                "macro": ":%y+ ENTER" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL s", \
+            "display": "保存", \
+            "popup": { \
+                "macro": ":w ENTER" \
+            } \
+        }, \
+        "HOME", \
+        "UP", \
+        "END", \
+        "PGDN" \
+    ], \
+    [ \
+        "CTRL", \
+        "ALT", \
+        "KEYBOARD", \
+        { \
+            "macro": "CTRL z", \
+            "display": "撤销", \
+            "popup": { \
+                "macro": "u" \
+            } \
+        }, \
+        { \
+            "macro": "CTRL y", \
+            "display": "重做", \
+            "popup": { \
+                "macro": "CTRL r" \
+            } \
+        }, \
+        "LEFT", \
+        "DOWN", \
+        "RIGHT", \
+        "ENTER" \
+    ] \
+]
+```
