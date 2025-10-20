@@ -31,7 +31,6 @@ mkdir -p /data/user/0/com.termux/files/home/.termux/widget/dynamic_shortcuts/
 mkdir -p /data/user/0/com.termux/files/home/.local/bin
 ```
 
-> 配置其他 shell
+安装其他 shell
 
-> [!NOTE]
-> [[fish]] [[zsh]]
+[[fish]] [[zsh]]
