@@ -1,6 +1,6 @@
 > [BusyBox](https://github.com/Magisk-Modules-Alt-Repo/BuiltIn-BusyBox/releases) 面具模块，使用 busybox 挂载
 
-### termux 环节
+## Termux 环节
 
 ```
 pkg install tsu wget
@@ -14,17 +14,17 @@ tsu
 cd /data/local/tmp/
 ```
 
-下载最新镜像
-
 ```bash
 mkdir arch && wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz && tar -xpf ArchLinuxARM-aarch64-latest.tar.gz -C arch/ && rm arch/etc/resolv.conf && rm ArchLinuxARM-aarch64-latest.tar.gz
 ```
 
-### 进入 archlinux
+## Arch 环节
+
+**启动脚本**
 
 [[ArchTty]]
 
-### 设置网络
+**设置网络**
 
 ```bash
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
@@ -34,7 +34,7 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf
 echo "127.0.0.1 localhost" > /etc/hosts
 ```
 
-### 设置软件源和 pacman
+**设置软件源和 pacman**
 
 ```bash
 sed -i.bak -e '/^## Geo-IP based mirror selection and load balancing/i\Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo\n' -e 's|^Server = http://mirror.archlinuxarm.org/\$arch/\$repo|# &|' /etc/pacman.d/mirrorlist
@@ -56,11 +56,11 @@ pacman-key --init
 pacman-key --populate archlinuxarm
 ```
 
-### 安装软件包
-
 ```bash
 pacman -Syu
 ```
+
+**安装软件包**
 
 必要的
 
@@ -74,16 +74,12 @@ pacman -S --noconfirm --needed sudo git wget curl openssh vim base-devel unzip p
 pacman -S --noconfirm --needed neovim micro rsync fzf zellij fd eza ripgrep zoxide atuin bat btop fastfetch gdu duf tealdeer inxi
 ```
 
-其他 shell（或者进入用户后更换）
+其他 shell（或者以后更换）
 
-```bash
-# 如果你想用 fish
-pacman -S fish
-# 如果你你想用 zsh
-pacman -S zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions
-```
+* [[fish]]
+* [[zsh]]
 
-### 用户和本地化
+**用户和本地化**
 
 ```bash
 passwd
@@ -117,7 +113,7 @@ echo "LANG=zh_CN.UTF-8" > /etc/locale.conf
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
 
-### 修复 fakeroot
+**修复 fakeroot**
 
 安装 fakeroot-tcp
 
@@ -167,46 +163,41 @@ cd ~
 sudo rm -r ~/fakeroot-tcp
 ```
 
-### 安装 aur 助手
+**安装 aur 助手**
+
+先切换用户
 
 ```bash
 su - yumeka
 ```
 
-> 如果你想用 yay
+* 如果你想用 yay
+	```bash
+	git clone https://aur.archlinux.org/yay.git && cd yay/ && makepkg -si && cd .. && rm -rf yay/
+	```
 
-```bash
-git clone https://aur.archlinux.org/yay.git && cd yay/ && makepkg -si && cd .. && rm -rf yay/
-```
-
-> 如果你想用 paru
-
-```bash
-git clone https://aur.archlinux.org/paru.git && cd paru/ && makepkg -si && cd .. && rm -rf paru/
-```
+* 如果你想用 paru
+	```bash
+	git clone https://aur.archlinux.org/paru.git && cd paru/ && makepkg -si && cd .. && rm -rf paru/
+	```
 
 > [!NOTE]
 > 此时可以备份系统，以后搞坏系统可以更方便的恢复
->  [转到](其他问题.md#备份系统)
+>  
+[[backup-arch.sh]] [[restore-arch.sh]]
 
-### 安装桌面
+**安装桌面**
 
-如果你想安装最小化桌面懒得折腾，以下是不包含音频模块，硬件加速的流程
+xfce4
 
 ```bash
 sudo pacman -S --noconfirm xfce4 xfce4-goodies
 ```
 
-主题（编译很慢）
-
-```bash
-paru -S yaru-xfwm4-theme yaru-gtk-theme yaru-icon-theme
-```
-
 字体
 
 ```bash
-pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji
+sudo pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji
 ```
 
 略缩图插件
@@ -227,47 +218,6 @@ sudo pacman -S gvfs
 pkg install -y x11-repo && pkg install -y termux-x11
 ```
 
+启动脚本
+
 [[ArchDesktop]]
-
-### 安装桌面（带硬件加速）
-
-> 安装驱动
-
-[mesa-turnip-kgsl-24.1.0-devel](https://github.com/LinuxDroidMaster/Termux-Desktops/blob/main/Documentation/HardwareAcceleration.md) 的驱动
-
-```bash
-sudo rm -f /usr/lib/libvulkan_freedreno.so /usr/share/vulkan/icd.d/freedreno_icd.aarch64.json && sudo pacman -S --noconfirm --needed unzip mesa vulkan-icd-loader vulkan-headers && wget https://github.com/MatrixhKa/mesa-turnip/releases/download/24.1.0/mesa-turnip-kgsl-24.1.0-devel.zip && unzip mesa-* -d turnip/ && cd turnip/ && sudo mkdir -p /usr/share/vulkan/icd.d/ && sudo mv libvulkan_freedreno.so /usr/lib/ && sudo mv freedreno_icd.aarch64.json /usr/share/vulkan/icd.d/ && cd .. && rm -r turnip/ mesa-turnip-kgsl-24.1.0-devel.zip
-```
-
-[mesa-vulkan-kgsl_24.1.0-devel-20240324_arm64.deb](https://www.bilibili.com/opus/1042342069764358179) 的驱动，确保 mesa-vulkan-kgsl_24.1.0-devel-20240324_arm64.deb 已经位于主目录
-
-```bash
-sudo rm -f /usr/lib/libvulkan_freedreno.so /usr/share/vulkan/icd.d/freedreno_icd.aarch64.json && sudo pacman -S --noconfirm --needed mesa vulkan-icd-loader vulkan-headers && mkdir -p ~/turnip_temp && cp ~/mesa-vulkan-kgsl_24.1.0-devel-20240324_arm64.deb ~/turnip_temp/ && cd ~/turnip_temp && ar x mesa-vulkan-kgsl_24.1.0-devel-20240324_arm64.deb && tar -xf data.tar.zst && sudo mv usr/lib/aarch64-linux-gnu/libvulkan_freedreno.so /usr/lib/ && sudo mv usr/share/vulkan/icd.d/freedreno_icd.aarch64.json /usr/share/vulkan/icd.d/ && cd ~ && rm -rf ~/turnip_temp && sudo sed -i 's|/usr/lib/aarch64-linux-gnu/|/usr/lib/|g' /usr/share/vulkan/icd.d/freedreno_icd.aarch64.json && rm ~/mesa-vulkan-kgsl_24.1.0-devel-20240324_arm64.deb
-```
-
-先卸载 vulkan-icd-loader 防止黑屏
-
-```bash
-sudo pacman -R vulkan-icd-loader
-```
-
-> [!NOTE]
-> 新建 [启动桌面脚本](其他问题.md#TurnipXfce4启动桌面脚本) 并启动桌面，然后在设置中禁用混成器
-
-重新安装 vulkan-icd-loader
-
-```bash
-sudo pacman -S vulkan-icd-loader
-```
-
-> 验证
-
-```bash
-sudo pacman -S --noconfirm --needed mesa-utils
-glxinfo | grep "OpenGL renderer"
-glxgears
-
-# 可选的
-sudo pacman -S --noconfirm --needed vulkan-tools
-vkcube # 由于兼容性问题，vkcube 可能不工作
-```
