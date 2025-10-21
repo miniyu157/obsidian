@@ -99,7 +99,7 @@ Termux:x11 App 键位
             "macro": "CTRL a",
             "display": "全选",
             "popup": {
-                "display": "全选复制",
+                "display": ":%y+ ENTER",
                 "macro": ":%y+ ENTER"
             }
         },
@@ -205,7 +205,7 @@ extra-keys = [ \
             "macro": "CTRL a", \
             "display": "全选", \
             "popup": { \
-                "display": "全选复制", \
+                "display": ":%y+ ENTER", \
                 "macro": ":%y+ ENTER" \
             } \
         }, \
