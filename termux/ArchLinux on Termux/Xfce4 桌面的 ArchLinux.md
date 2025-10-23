@@ -71,7 +71,7 @@ pacman -S --noconfirm --needed sudo git wget curl openssh vim base-devel unzip p
 常用工具
 
 ```bash
-pacman -S --noconfirm --needed neovim micro rsync fzf zellij fd eza ripgrep zoxide atuin bat btop fastfetch gdu duf tealdeer inxi
+pacman -S --noconfirm --needed neovim micro rsync fzf zellij fd eza ripgrep zoxide atuin bat btop fastfetch gdu duf tealdeer inxi devtools
 ```
 
 其他 shell（或者以后更换）
