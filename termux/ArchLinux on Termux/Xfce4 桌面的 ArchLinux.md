@@ -200,6 +200,12 @@ sudo pacman -S --noconfirm xfce4 xfce4-goodies
 sudo pacman -S --noconfirm --needed ttf-fira-code wqy-microhei noto-fonts-emoji
 ```
 
+推荐的其它字体
+
+```bash
+paru -S ttf-harmonyos-sans ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd ttf-cascadia-mono-nerd
+```
+
 略缩图插件
 
 ```bash
