@@ -1,6 +1,6 @@
 以 Podman 为例
 
-**创建
+**创建**
 
 ```bash
 podman create \
@@ -13,19 +13,19 @@ podman create \
 
 其中 `/var/lib/mysql` 是挂载的数据位置
 
-**启动容器
+**启动容器**
 
 ```bash
 podman start my-mysql
 ```
 
-**进入容器的 mysql 命令行
+**进入容器的 mysql 命令行**
 
 ```bash
 podman exec -it my-mysql mysql -u root -p
 ```
 
-**进入容器系统
+**进入容器系统**
 
 ```bash
 podman exec -it my-mysql /bin/bash
