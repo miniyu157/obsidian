@@ -1,10 +1,10 @@
-### 拉取镜像时手动指定镜像源
+**拉取镜像时手动指定镜像源**
 
 ```bash
 podman pull docker.io/mysql:latest
 ```
 
-### 或者编辑配置文件
+**或者编辑配置文件**
 
 ```bash
 sudo vim /etc/containers/registries.conf
