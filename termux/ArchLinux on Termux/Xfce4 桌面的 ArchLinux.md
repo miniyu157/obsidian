@@ -209,13 +209,23 @@ paru -S ttf-harmonyos-sans ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd ttf-ca
 略缩图插件
 
 ```bash
-sudo pacman -S --noconfirm --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub
+sudo pacman -S --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub
 ```
 
 回收站
 
 ```bash
 sudo pacman -S gvfs
+```
+
+可选的其他
+
+```bash
+paru -S visual-studio-code-bin kate ark konsole gimp firefox intellij-idea-ultimate-edition copyq github-cli lazygit rustup nodejs npm libreoffice-fresh libreoffice-fresh-zh-cn
+
+rustup default stable
+
+rustup component add rust-analyzer --toolchain stable-aarch64-unknown-linux-gnu
 ```
 
 装好后 exit 退出来
