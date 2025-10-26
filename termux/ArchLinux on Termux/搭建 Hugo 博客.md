@@ -122,7 +122,7 @@ sudo nginx -s stop
 
 **在世界各地访问**
 > ```bash
->  ip a | rg 'inet .* wlan0'
+>  ip a | rg 'inet6 .* scope global dynamic'
 >  # 输出类似 inet6 2409:8a1a:537:9850:7840:abff:fe1b:9266/64 scope global dynamic mngtmpaddr proto kernel_ra
 >  ```
 [http://[2409:8a1a:537:9850:7840:abff:fe1b:9266]/](http://[2409:8a1a:537:9850:7840:abff:fe1b:9266]/)
