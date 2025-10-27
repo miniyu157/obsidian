@@ -1,5 +1,3 @@
-> [BusyBox](https://github.com/Magisk-Modules-Alt-Repo/BuiltIn-BusyBox/releases) 面具模块，使用 busybox 挂载
-
 ## Termux 环节
 
 ```
