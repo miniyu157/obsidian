@@ -11,13 +11,7 @@ fi
 ChrootPath="/data/local/tmp/arch"
 
 # 取消挂载文件系统
-umount -l $ChrootPath/sdcard
-umount -l $ChrootPath/tmp
-umount -l $ChrootPath/proc
-umount -l $ChrootPath/sys
-umount -l $ChrootPath/dev/shm
-umount -l $ChrootPath/dev/pts
-umount -l $ChrootPath/dev
+sh '/data/user/0/com.termux/files/home/.local/bin/umount-arch'
 
 # 解决用户切换的 suid 问题
 mount -o remount,dev,suid /data
@@ -35,4 +29,5 @@ LoginUser="${1:-yumeka}"
 
 # Chroot 进入
 exec chroot $ChrootPath /bin/su - "$LoginUser"
+
 ```
