@@ -22,5 +22,6 @@
     "editor:unindent-list",
     "editor:fold-all",
     "editor:unfold-all"
-  ]
+  ],
+  "alwaysUpdateLinks": true
 }

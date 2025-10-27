@@ -181,8 +181,8 @@ su - yumeka
 
 > [!NOTE]
 > 此时可以备份系统，以后搞坏系统可以更方便的恢复
->  
-[[backup-arch.sh]] [[restore-arch.sh]]
+>  https://github.com/miniyu157/termux-arch-chroot/blob/main/termux-scripts/local_bin/arch-backup
+>  https://github.com/miniyu157/termux-arch-chroot/blob/main/termux-scripts/local_bin/arch-restore
 
 **安装桌面**
 
