@@ -1,3 +1,4 @@
+```bash
 #!/data/data/com.termux/files/usr/bin/sh
 
 if [ -z "$1" ]; then
@@ -21,5 +22,6 @@ am start \
     --grant-read-uri-permission \
     -a android.intent.action.VIEW \
     -n bin.mt.plus/bin.mt.plus.OpenFileActivity \
-    $MIME_TYPE_OPTION \
+    "$MIME_TYPE_OPTION" \
     -d "file://${TARGET_PATH}"
+```

@@ -1,3 +1,4 @@
+```bash
 #!/data/data/com.termux/files/usr/bin/sh
 
 if [ -z "$1" ]; then
@@ -13,3 +14,4 @@ am start \
     -a android.intent.action.VIEW \
     -n bin.mt.plus/bin.mt.plus.OpenTextActivity \
     -d "file://${FILE_PATH}"
+```

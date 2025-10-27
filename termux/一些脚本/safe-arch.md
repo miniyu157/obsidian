@@ -1,7 +1,9 @@
+```bash
 #!/data/data/com.termux/files/usr/bin/sh
 
 # 如果不是 root, 使用 su -c 重新执行脚本自身
 if [ "$(id -u)" -ne 0 ]; then
+    # shellcheck disable=SC2016
     exec su -c 'exec "$0" "$@"' "$0" "$@"
 fi
 
@@ -32,4 +34,5 @@ fi
 LoginUser="${1:-yumeka}"
 
 # Chroot 进入
-exec chroot $ChrootPath /bin/su - $LoginUser
+exec chroot $ChrootPath /bin/su - "$LoginUser"
+```
