@@ -1,3 +1,5 @@
+> 写这篇文章时，以下操作在 termux chroot archlinux 完成，可能和标准 Linux 环境有所不同
+
 创建公钥清单并修正权限
 
 ```bash
