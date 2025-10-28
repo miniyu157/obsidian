@@ -130,3 +130,7 @@ EDITOR=nvim crontab -e
 > `*`：(星期) 每一周。
 > 
 > `/home/yumeka/update_ddns.sh >> /home/yumeka/ddns_update.log 2>&1`：要执行的命令，它会运行 DDNS 脚本并重定向输出到 `/home/yumeka/ddns_update.log`
+
+
+> [!NOTE]
+> 最后，别忘记更改 hugo baseurl 的配置！
