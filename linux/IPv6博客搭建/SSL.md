@@ -1,3 +1,5 @@
+> 写这篇文章时，以下操作在 termux chroot archlinux 完成，可能和标准 Linux 环境有所不同
+
 **安装 Certbot Nginx 插件**
 
 Certbot 是 Let's Encrypt 的客户端，certbot-nginx 插件可以自动读取并修改 Nginx 配置

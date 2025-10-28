@@ -15,7 +15,7 @@ sudo pacman -S nginx hugo
 初始化博客
 
 ```bash
-hugo new site yumeka-blog && cd yumeka-blog
+hugo new site yumeka.blog && cd yumeka.blog
 ```
 
 初始化 git
@@ -50,42 +50,38 @@ theme = "stack"
 创建 nginx 网站根目录
 
 ```bash
-sudo mkdir -p /srv/http/yumeka-blog
+sudo mkdir -p /srv/http/yumeka.blog
 ```
 
 修正所有者
 
 ```bash
-sudo chown -R yumeka:yumeka /srv/http/yumeka-blog 
+sudo chown -R yumeka:yumeka /srv/http/yumeka.blog 
 ```
 
 生成静态网页
 
 ```bash
-hugo -D -d /srv/http/yumeka-blog
+hugo -D -d /srv/http/yumeka.blog
 ```
 
 编辑 /etc/nginx/nginx.conf，修改为以下内容
 
 ```
     server {
-        # 侦听 IPv4 和 IPv6 的 80 端口
         listen       80;
         listen       [::]:80;
 
-        # 接受所有域名/IP 的请求
         server_name  _;
 
         # 指向 Hugo 生成的 public 目录
-        root   /srv/http/yumeka-blog;
+        root   /srv/http/yumeka.blog;
         index  index.html index.htm;
 
         location / {
-            # 确保 Hugo 的子页面能正确访问
             try_files $uri $uri/ =404;
         }
 
-        # 保留默认的错误页面配置
         error_page   500 502 503 504  /50x.html;
         location = /50x.html {
             root   /usr/share/nginx/html;

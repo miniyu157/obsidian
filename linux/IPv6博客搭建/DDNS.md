@@ -10,7 +10,7 @@
 
 ### 配置 DDNS脚本
 
-写一个脚本在 `~/update_ddns.sh`，用于上传 ipv6 到域名服务商
+写一个脚本在 `~/update_ddns.sh`，用于上传 ipv6 到域名服务商，记得给予执行权限
 
 其中 TTL 告诉全世界的 DNS 解析器（比如 8.8.8.8 等），这个域名对应的 IP 地址可以在缓存中保存多久
 
@@ -18,9 +18,9 @@
 #!/bin/bash
 
 # --- 配置区域 ---
-API_KEY="pk1_xxxxxxxxxxx"
-SECRET_KEY="sk1_xxxxxxxxxx"
-DOMAIN="你的域名"
+API_KEY="pk1_xxxx"
+SECRET_KEY="sk1_xxxx"
+DOMAIN="yumeka.blog"
 TTL="600"
 INTERFACE="wlan0"
 # --- 修改结束 ---
@@ -42,7 +42,8 @@ if [ -z "${CURRENT_IPV6}" ]; then
 fi
 
 # 2. 准备 API Payloads
-DELETE_PAYLOAD=$(cat <<EOF
+DELETE_PAYLOAD=$(
+    cat << EOF
 {
     "apikey": "${API_KEY}",
     "secretapikey": "${SECRET_KEY}"
@@ -50,7 +51,8 @@ DELETE_PAYLOAD=$(cat <<EOF
 EOF
 )
 
-CREATE_PAYLOAD=$(cat <<EOF
+CREATE_PAYLOAD=$(
+    cat << EOF
 {
     "apikey": "${API_KEY}",
     "secretapikey": "${SECRET_KEY}",
@@ -64,8 +66,8 @@ EOF
 
 # 3. 步骤一：删除所有匹配的旧 AAAA 记录
 DELETE_RESPONSE=$(curl -s -X POST "https://api.porkbun.com/api/json/v3/dns/deleteByNameType/${DOMAIN}/AAAA" \
-     -H "Content-Type: application/json" \
-     --data "${DELETE_PAYLOAD}")
+    -H "Content-Type: application/json" \
+    --data "${DELETE_PAYLOAD}")
 
 NON_FATAL_ERROR=""
 if ! echo "${DELETE_RESPONSE}" | grep -q '"status":"SUCCESS"'; then
@@ -75,8 +77,8 @@ fi
 
 # 4. 步骤二：创建新的 AAAA 记录
 CREATE_RESPONSE=$(curl -s -X POST "https://api.porkbun.com/api/json/v3/dns/create/${DOMAIN}" \
-     -H "Content-Type: application/json" \
-     --data "${CREATE_PAYLOAD}")
+    -H "Content-Type: application/json" \
+    --data "${CREATE_PAYLOAD}")
 
 # 5. 最终输出 (单一出口)
 if echo "${CREATE_RESPONSE}" | grep -q '"status":"SUCCESS"'; then
@@ -87,6 +89,7 @@ else
     print_log "ERROR" "创建记录失败: ${ERROR_MSG}${NON_FATAL_ERROR}"
     exit 1
 fi
+
 ```
 
 运行脚本测试一下
