@@ -59,3 +59,9 @@ scrcpy \
   --no-mipmaps \
   --no-audio
 ```
+
+或者调整加密算法
+
+```bash
+ssh -c chacha20-poly1305@openssh.com -L 5555:127.0.0.1:5555 yumeka@yumeka.blog -p 37781
+```
