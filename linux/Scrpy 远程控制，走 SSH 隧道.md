@@ -23,7 +23,7 @@ setprop service.adb.tcp.port 5555 && stop adbd && start adbd
 开启 ssh 隧道，将本地端口映射到服务器的
 
 ```bash
-ssh -N -L 5555:127.0.0.1:9876 -p 5555 yumeka@server.yumeka.blog
+ssh -N -L 5555:127.0.0.1:5555 -p 37781 yumeka@server.yumeka.blog
 ```
 
 使用 adb 连接，此时应该在服务器点击授权
