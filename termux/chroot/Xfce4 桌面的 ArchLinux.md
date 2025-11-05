@@ -13,7 +13,7 @@ cd /data/local/tmp/
 ```
 
 ```bash
-mkdir arch && wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz && tar -xpf ArchLinuxARM-aarch64-latest.tar.gz -C arch/ && rm arch/etc/resolv.conf && rm ArchLinuxARM-aarch64-latest.tar.gz
+mkdir -p arch && wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz && tar -xpf ArchLinuxARM-aarch64-latest.tar.gz -C arch/ && rm arch/etc/resolv.conf && rm ArchLinuxARM-aarch64-latest.tar.gz
 ```
 
 ## Arch 环节
