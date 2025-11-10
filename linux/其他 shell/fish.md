@@ -41,41 +41,61 @@ if status is-interactive
         set_color normal
     end
 end
+
 ```
 
 `~/.config/fish/functions/fish_prompt.fish`
 
 ```bash
-# ~/.config/fish/functions/fish_prompt.fish
-
 function fish_prompt
-    # 保存最后一个命令的退出状态
     set -l last_status $status
 
-    ## user@host
-    # set_color green
-    # printf '%s@%s' (whoami) (prompt_hostname)
-    # set_color normal
-    # printf ':'
+    printf '\n'
 
-    # 当前目录名称
-    set_color --bold blue
-    printf '%s' (basename $PWD)
+    set -l color_bg '44475a'
+    set -l color_sep 'white'
+
+    printf '╭─'
+
+    set_color --background $color_bg
+
+    set_color green
+    printf '   %s ' (whoami)
+
+    set_color $color_sep
+    printf ''
+    
+    set_color green
+    if test (pwd) = $HOME
+        printf '   ~ '
+    else
+        printf '   %s ' (basename (pwd))
+    end
+
+    set -l git_prompt (fish_git_prompt)
+    if test -n "$git_prompt"
+        set_color $color_sep
+        printf ''
+        
+        set_color yellow
+        printf '  %s ' "$git_prompt"
+    end
+    
     set_color normal
+    
+    printf '\n'
+    
+    printf '╰─ '
 
-    # Git 分支信息
-    set_color yellow
-    printf '%s' (fish_git_prompt)
-    set_color normal
-
-    # 根据上一个命令是否成功，显示不同颜色的提示符
     if test $last_status -ne 0
         set_color --bold red
     else
         set_color --bold green
     end
-
-    printf ' ❯ '
+    
+    printf '❯ '
+    
     set_color normal
 end
+
 ```
