@@ -39,10 +39,6 @@ sed -i.bak -e '/^## Geo-IP based mirror selection and load balancing/i\Server = 
 ```
 
 ```bash
-sed -i.bak '1i TMPDIR=/var/tmp' /etc/mkinitcpio.conf
-```
-
-```bash
 sed -i.bak -e 's/^#Color/Color/' -e 's/^#DisableSandbox/DisableSandbox/' -e '/^CheckSpace/s/^/#/' /etc/pacman.conf
 ```
 
