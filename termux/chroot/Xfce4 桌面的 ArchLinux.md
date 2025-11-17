@@ -43,7 +43,7 @@ sed -i.bak '1i TMPDIR=/var/tmp' /etc/mkinitcpio.conf
 ```
 
 ```bash
-sed -i.bak -e 's/^#Color/Color/' -e '/^CheckSpace/s/^/#/' /etc/pacman.conf
+sed -i.bak -e 's/^#Color/Color/' -e 's/^#DisableSandbox/DisableSandbox/' -e '/^CheckSpace/s/^/#/' /etc/pacman.conf
 ```
 
 ```bash
