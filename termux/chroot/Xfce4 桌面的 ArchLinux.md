@@ -112,7 +112,7 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 安装 fakeroot-tcp
 
 ```bash
-wget "https://raw.githubusercontent.com/miniyu157/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz/refs/heads/main/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz" && pacman -U fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz && rm fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz
+wget "https://raw.githubusercontent.com/miniyu157/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz/refs/heads/main/fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz" && sudo pacman -U fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz && rm fakeroot-tcp-1.37.1.2-1-aarch64.pkg.tar.xz
 ```
 
 如果链接寄了
