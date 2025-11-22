@@ -186,6 +186,8 @@ xfce4
 
 ```bash
 sudo pacman -S --noconfirm xfce4 xfce4-goodies
+
+# 排除 xfburn xfce4-mount-plugin xfce4-screensaver xfce4-sensors-plugin xfce4-pulseaudio-plugin thunar-volman xfce4-power-manager
 ```
 
 字体
@@ -204,6 +206,8 @@ paru -S ttf-harmonyos-sans ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd ttf-ca
 
 ```bash
 sudo pacman -S --needed tumbler ffmpegthumbnailer poppler-glib libgsf libopenraw gstreamer gst-libav libgepub
+# 或者轻量一点，但是会弹出警告
+sudo pacman -S --needed tumbler poppler-glib
 ```
 
 回收站
